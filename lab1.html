@@ -3,24 +3,90 @@
 <head>
     <title>Lab 1</title>
     <style>
-    body { font-family: Times New Roman; margin: 20px}
-    label { display: block; margin: 10px 0 5px}
-    input, select { width: 100%; padding: 8px, ;margin-bottom: 15px}
-    button { padding: 5px 10px; margin-right: 10px; cursor: pointer }
+    	body { font-family: Times New Roman; margin: 20px}
+    	label { display: block; margin: 10px 0 5px}
+    	input, select { width: 100%; padding: 8px, ;margin-bottom: 15px}
+    	button { padding: 5px 10px; margin-right: 10px; cursor: pointer }
+    	.error{color: red; font-size: 12px}
+    	.preview{display: block; margin-top:10px; width: 100px; height: 100px}
     </style>
 </head>
 <body>
     <h1>Create an account</h1>
     <form>
+    	<!username input>
     	<label for="username"> Username </label>
-    	<input type="text" id="username" name="username" placeholder="Enter your username" required>
+    	<input type="text" id="username" name="username" placeholder="Enter your username" maxlength="255" required>
+    	<p class="error" id = "usernameError"></p>
     	
+    	<!password input>
     	<label for="password"> Password</label>
-    	<input type="text" id="password" name="password" placeholder="Enter your password" required>
+    	<input type="text" id="password" name="password" placeholder="Enter your password" maxlength="255" required>
+    	<button type = "button" onclick = "togglePassword()">Show/Hide</button>>
+    	<p class="error" id = "passwordError"></p>
     	
+    	<!email input>
     	<label for="email"> Email Address</label>
-    	<input type="text" id="email" placeholder="Enter your Email Address" required>
+    	<input type="text" id="email" placeholder="Enter your Email Address" maxlength="255" required>
+    	<p class="error" id = "emailError"></p>
     	
+    	<!fullname input>
+    	<label for="fullname" >Full name (Optional)</label>
+		<input type="text" id="fullname" name = "fullname" placeholder="Enter your fullname" maxlength="255">
+		<p class="error" id = "fullnameError"></p>
+		
+		<!role dropdown>
+		<label for="role"> Role </label>
+		<select id="role" required> 
+    		<option value="" disabled selected > Select your role </option>
+    		<option value="lecturer"> Lecturer </option>
+    		<option value="student"> Student </option> 
+    	</select>
+    	<p class="error" id="roleError"></p>
+    	
+    	<!pfp upload>
+    	<label for="pfp"> Profile Picture</label>
+    	<input type="file" id="pfp" accept="image/*" onchange="previewImage()">
+    	<img id="preview" class="preview" alt="Profile picture preview">
+    	
+    	<!read-only field>
+    	<label for="createAt"> Account created at </label>
+    	<input type="text" id="createAt" readonly value="2024:09:28 10:43:00">
+    	
+    	<label for="updatedAt"> Last updated at </label>
+    	<input type="text"id="updateAt" readonly value="2024:09:28 22:23:00">
+    	
+    	<!buttons>
+    	<button type="submit" id="createBut"> Create account </button>
+    	<button type="cancel" id="cancleBut"> Cancer </button>
+ 		
+ 		<script>
+ 			//password visibility toggle
+ 			function togglePassword() {
+ 				var passwordField = document.getElementById("password");
+ 				if (passwordField.type === "password"){
+ 					passwordField.type = "text";
+ 				} else passwordFieldd.type = "password";
+ 			}
+ 			
+ 			//pfp preview
+ 			function previewImage(){
+ 				var file = document.getElementById("pfp").files[0];
+ 				var preview = document.getElementById("preview");
+ 				var reader = new FileReader();
+ 				
+ 				reader.onload = function (e) {
+ 					preview.scr = e.target.result;
+ 				};
+ 				
+ 				if (file){
+ 					reader.readAsDataURL(file);
+ 				} else {
+ 					preview.scr = "";
+ 				}
+ 			}
+ 		</script>   	
     </form>
 </body>
 </html>
+		<input type = > 
