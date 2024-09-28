@@ -6,11 +6,21 @@
     body { font-family: Times New Roman; margin: 20px}
     label { display: block; margin: 10px 0 5px}
     input, select { width: 100%; padding: 8px, ;margin-bottom: 15px}
-    button { padding: 5px 10px; margin-right: 10px }
+    button { padding: 5px 10px; margin-right: 10px; cursor: pointer }
     </style>
 </head>
 <body>
     <h1>Create an account</h1>
-    <p>Hello, this is my lab1.html file!</p>
+    <form>
+    	<label for="username"> Username </label>
+    	<input type="text" id="username" name="username" placeholder="Enter your username" required>
+    	
+    	<label for="password"> Password</label>
+    	<input type="text" id="password" name="password" placeholder="Enter your password" required>
+    	
+    	<label for="email"> Email Address</label>
+    	<input type="text" id="email" placeholder="Enter your Email Address" required>
+    	
+    </form>
 </body>
 </html>
